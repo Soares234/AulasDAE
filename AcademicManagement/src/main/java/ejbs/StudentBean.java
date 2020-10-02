@@ -17,6 +17,7 @@ public class StudentBean {
         Course course=em.find(Course.class,courseId);
         if (course!=null) {
             Student s = new Student(username, password, name, email, course);
+            course.addStudent(s);
             em.persist(s);
         }
     }
