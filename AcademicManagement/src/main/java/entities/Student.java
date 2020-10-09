@@ -3,36 +3,42 @@ package entities;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @NamedQueries({
         @NamedQuery(name = "getAllStudents",query = "SELECT s FROM Student s ORDER BY s.name" // JPQL)
         )})
-@Table(name="STUDENTS")
-public class Student {
-    @Id
-    public String username;
-    @NotNull
-    public String password;
-    @NotNull
-    @Email
-    public String email;
-    @NotNull
-    public String name;
+public class Student extends User{
+
     @ManyToOne
     @JoinColumn(name="COURSE_CODE")
     @NotNull
     private Course course;
+    @ManyToMany
+    @JoinTable(name = "SUBJECTS_STUDENTS",
+            joinColumns = @JoinColumn(name = "SUBJECT_CODE", referencedColumnName = "CODE"),
+            inverseJoinColumns=@JoinColumn(name = "STUDENT_USERNAME", referencedColumnName = "USERNAME"))
+    private Set<Subject> subjects;
 
     public Student() {
+        super();
+        this.subjects = new HashSet<>();
     }
 
     public Student(String username, String password, String email, String name,Course course) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.name = name;
+        super(username, password, email, name);
         this.course = course;
+        this.subjects = new HashSet<>();
+    }
+
+    public Set<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(Set<Subject> subjects) {
+        this.subjects = subjects;
     }
 
     public Course getCourse() {
@@ -40,38 +46,16 @@ public class Student {
     }
 
     public void setCourse(Course course) {
+
         this.course = course;
     }
+    public void addSubject(Subject subject){
 
-    public String getUsername() {
-        return username;
+        subjects.add(subject);
+    }
+    public void removeSubject(Subject subject){
+
+        subjects.remove(subject);
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

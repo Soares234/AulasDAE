@@ -5,7 +5,10 @@
     </div>
     <b-container>
       <b-button variant="primary">Create Student</b-button>
-      <b-table striped over :items="students" :fields="fields"/>
+      <b-table striped over :items="students" :fields="fields">
+        <template v-slot:cell(actions)="row"><nuxt-link class="btn btn-link" :to="`/students/${row.item.username}`">Details</nuxt-link>
+        </template>
+      </b-table><nuxt-link to="/">Back</nuxt-link>
     </b-container>
 
   </div>
@@ -17,7 +20,8 @@ export default {
       fields: [
         'username',
         'name',
-        'email'],
+        'email',
+      'actions'],
       students: []
     }
   }, created() {
