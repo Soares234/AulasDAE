@@ -19,6 +19,7 @@ public class CourseBean {
         }
             em.persist(course);
     }
+
     public List<Course> getAllCourses() {
         // remember, maps to: “SELECT s FROM Student s ORDER BY s.name”
         return (List<Course>) em.createNamedQuery("getAllCourses").getResultList();

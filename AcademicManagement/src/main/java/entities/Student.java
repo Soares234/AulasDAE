@@ -18,8 +18,8 @@ public class Student extends User{
     private Course course;
     @ManyToMany
     @JoinTable(name = "SUBJECTS_STUDENTS",
-            joinColumns = @JoinColumn(name = "SUBJECT_CODE", referencedColumnName = "CODE"),
-            inverseJoinColumns=@JoinColumn(name = "STUDENT_USERNAME", referencedColumnName = "USERNAME"))
+            joinColumns = @JoinColumn(name = "STUDENT_USERNAME", referencedColumnName = "USERNAME"),
+            inverseJoinColumns=@JoinColumn(name = "SUBJECT_CODE", referencedColumnName = "CODE"))
     private Set<Subject> subjects;
 
     public Student() {
@@ -50,7 +50,6 @@ public class Student extends User{
         this.course = course;
     }
     public void addSubject(Subject subject){
-
         subjects.add(subject);
     }
     public void removeSubject(Subject subject){

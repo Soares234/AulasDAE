@@ -13,10 +13,10 @@ import java.util.List;
 public class StudentBean {
     @PersistenceContext
     EntityManager em;
-    public void create(String username, String password ,  String email, String name,int courseId){
+    public void create(String username, String password ,  String name, String email,int courseId){
         Course course=em.find(Course.class,courseId);
         if (course!=null) {
-            Student s = new Student(username, password, name, email, course);
+            Student s = new Student(username, password, email, name, course);
             course.addStudent(s);
             em.persist(s);
         }

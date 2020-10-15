@@ -5,7 +5,7 @@
     <p>Name: {{ student.name }}</p>
     <p>Email: {{ student.email }}
     </p><p>Course: {{ student.courseName }}</p>
-    <h4>Subjectsenrolled:</h4><b-table v-if="subjects.length" striped over :items="subjects" :fields="subjectFields" />
+    <h4>Subjects:</h4><b-table v-if="subjects.length" striped over :items="subjects" :fields="subjectFields" />
     <p v-else>No subjects enrolled.</p>
     <nuxt-link to="/students">Back</nuxt-link>
   </b-container>
@@ -21,7 +21,7 @@ export default {
           'name',
           'courseCode',
           'courseYear',
-          'scholarYear' ]
+          'schoolYear' ]
     }
     }
     ,computed:

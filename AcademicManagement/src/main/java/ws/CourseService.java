@@ -2,6 +2,7 @@ package ws;
 
 import dtos.CourseDTO;
 import dtos.StudentDTO;
+import dtos.SubjectDTO;
 import ejbs.CourseBean;
 import ejbs.StudentBean;
 import entities.Course;
@@ -11,6 +12,7 @@ import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,12 +37,6 @@ public class CourseService {
         return toDTOs(cb.getAllCourses());
     }
 
- /*   @POST
-    @Path("/")
-    public Response createNewStudent (StudentDTO studentDTO){
-        studentBean.create(studentDTO.getUsername(),studentDTO.getPassword(),studentDTO.getName(),studentDTO.getEmail(),studentDTO.getCourseCode());
-        Student newStudent = studentBean.findStudent(studentDTO.getUsername());
-        if(newStudent==null)
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-        return Response.status(Response.Status.CREATED).entity(toDTO(newStudent)).build();}*/
+
+
 }

@@ -10,8 +10,10 @@
         <b-dropdown-item @click="clickNavbar('/courses')">See Courses List</b-dropdown-item>
         <b-dropdown-item> Under Construction!</b-dropdown-item>
       </b-nav-item-dropdown>
+      <b-nav-item-dropdown text="Subjects" center>
+        <b-dropdown-item @click="clickNavbar('/subjects')">See Subject List</b-dropdown-item>
+        <b-dropdown-item> Under Construction!</b-dropdown-item>
       </b-nav-item-dropdown>
-
     </b-navbar>
     <Nuxt />
   </div>
